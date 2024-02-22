@@ -1,7 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int search(int numbers[], int low, int high, int value) 
 {
+	int mid;
+	if (low > high)
+		return -1;
+	//Exits if lower bound is higher than the higher bound	
+
+	if (low <= high)
+		{
+			mid = (low+high)/2;
+
+			if (value < numbers[mid])
+			return search(numbers, low, mid-1, value); 
+			//If the value is less than the median of the array index, run search again.
+		
+			else if (value > numbers[mid])
+			return search(numbers, mid+1, high, value);
+			//If the value is greater than the median of the array index, run search again.
+
+			else
+			return 1;
+		}
+
 	return -1;
 }
 
